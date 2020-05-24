@@ -11,9 +11,15 @@ export default class Todo extends React.Component {
         ],
     };
 
-    addNewTodo(newTodo) {
-        console.log('submited', newTodo);
-    }
+    addNewTodo = (newTodo) => {
+        // {title: ''}
+        newTodo.id = Date.now();
+        newTodo.isDone = false;
+
+        this.setState({
+            todos: [...this.state.todos, newTodo],
+        });
+    };
 
     render() {
         return (
