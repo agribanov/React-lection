@@ -21,10 +21,28 @@ export default class Todo extends React.Component {
         });
     };
 
+    deleteTodo = (id) => {
+        this.setState({
+            todos: this.state.todos.filter((item) => item.id !== id),
+        });
+    };
+
+    toggleTodo = (id) => {
+        this.setState({
+            todos: this.state.todos.map((item) =>
+                item.id !== id ? item : { ...item, isDone: !item.isDone }
+            ),
+        });
+    };
+
     render() {
         return (
             <>
-                <TodoList todos={this.state.todos} />
+                <TodoList
+                    todos={this.state.todos}
+                    onDelete={this.deleteTodo}
+                    onToggle={this.toggleTodo}
+                />
                 <TodoForm onSubmit={this.addNewTodo} />
             </>
         );

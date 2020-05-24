@@ -3,10 +3,16 @@ import TodoListItem from './TodoListItem';
 
 export default class TodoList extends Component {
     render() {
+        const { todos, onDelete, onToggle } = this.props;
         return (
             <ul>
-                {this.props.todos.map((item) => (
-                    <TodoListItem key={item.id} item={item} />
+                {todos.map((item) => (
+                    <TodoListItem
+                        key={item.id}
+                        item={item}
+                        onDelete={onDelete}
+                        onToggle={onToggle}
+                    />
                 ))}
             </ul>
         );

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 export default class TodoForm extends Component {
     state = {
-        hello: 'world',
         taskTitle: '',
     };
+
     onFormSubmit = (e) => {
         e.preventDefault();
 
@@ -25,6 +25,7 @@ export default class TodoForm extends Component {
         return (
             <form onSubmit={this.onFormSubmit}>
                 <input
+                    autoComplete="off"
                     type="text"
                     name="taskTitle"
                     value={this.state.taskTitle}
